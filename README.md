@@ -16,4 +16,4 @@ The deliverable for the base questions should include a minimum of 5-7 visualiza
 A Presentation with: 
 Detailed statistical summary that includes key findings
 Best/most important visualizations for support
-(Taken from the Spark Page outlining the project.
+(Taken from the Spark Page outlining the project.)
