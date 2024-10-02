@@ -1,6 +1,9 @@
 # Boston-Budget-Project
-For this projec tthe group will be analysing data and using this analysis to create a presentation for what the City of Boston's Budget should be for the upcoming year. 
-Our Midterm deliverable will be all of the data we intend to use to create this presentation cleaned and visualizable.
+For this project the group will be analysing data and using this analysis to create a presentation for what the City of Boston's Budget should be for the upcoming year. \
+
+Our Midterm deliverable will be all of the data we intend to use to create this presentation cleaned and visualizable. \
+
+
 Our Final deliverable will include: 
 All code and cleaned datasets upload onto designated platform
 All code used to change the datasets and create visualizations – including cleaning and any preparation.
