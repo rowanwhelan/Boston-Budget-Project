@@ -1,0 +1,235 @@
+===== General Program Statistics =====
+Total Number of Programs: 192
+Total Spending (All Years): $16,652,547,144.61
+Average Spending per Program: $21,683,004.09
+Standard Deviation in Spending: $58,369,415.61
+
+===== Highest and Lowest Spending Programs =====
+Highest Spending Program: Pensions ($1,518,693,684.40)
+Lowest Spending Program: Internal Affairs Oversight Panel (IOAP) ($34,575.01)
+
+===== Year-wise Spending Statistics =====
+
+FY22 Actual Expense:
+  Total: $3,829,375,037.78
+  Mean: $19,944,661.66
+  Std Dev: $53,446,059.01
+  Min: $8,575.00
+  Max: $323,684,235.00
+
+FY23 Actual Expense:
+  Total: $4,037,893,106.27
+  Mean: $21,030,693.26
+  Std Dev: $56,986,148.30
+  Min: $4,443.00
+  Max: $381,918,656.00
+
+FY24 Appropriation:
+  Total: $4,244,402,356.34
+  Mean: $22,106,262.27
+  Std Dev: $59,724,865.62
+  Min: $0.00
+  Max: $390,596,447.40
+
+FY25 Budget:
+  Total: $4,540,876,644.22
+  Mean: $23,650,399.19
+  Std Dev: $63,320,589.50
+  Min: $0.00
+  Max: $422,494,346.00
+
+===== List of All Programs =====
+- A&F
+- ASSET
+- Accounting
+- Accounting/Quality Control
+- Accounts Payable
+- Accounts Receivable
+- Admin & Finance
+- Administration
+- Administration & Policy
+- Affirmative Action
+- Age Strong Administration
+- Age Strong Operations
+- Age Strong Transportation
+- Alterations & Repair
+- Alternative
+- Animal Care & Control
+- Annual Audit Costs
+- Archives
+- Arts and Culture
+- Assessing Operations
+- Auditing Administration
+- BAT-Admin & Technology
+- BAT-Operations
+- BFD Administration
+- BFD Fire Prevention
+- BFD Maintenance
+- BFD Training
+- BPS Finance
+- BPS Operations
+- Boston 311
+- Boston Fire Suppression
+- Bridge Operations/Maintenance
+- Broadband & Digital Equity
+- Budget & Management
+- Budget Administration
+- Building Operations
+- Building Systems
+- Building/Facility Maintenance
+- Buildings & Structures
+- Bureau of Community Engagement
+- Bureau of Field Services
+- Bureau of Intelligence & Analysis
+- Bureau of Investigative Services
+- Bureau of Professional Development
+- Bureau of Professional Standards
+- Capital Budgeting
+- Capital Planning Unit
+- Cemetery
+- Central Payroll
+- Central Services
+- Charter School Tuition
+- Chief of Schools
+- Child Care & Out-of-School
+- City Council Administration
+- City Councilors
+- Citywide Recreation
+- Civilian Review Board (CRB)
+- Community & Neighborhood Services
+- Construction Management
+- Consumer Affairs
+- Consumer Licensing
+- Core Infrastructure
+- Data & Analytics
+- Debt Service
+- Depositions
+- Digital Engagement & Services
+- Disabilities
+- DoIT Operations
+- Document Filing
+- Early Learning Center
+- Economic Development
+- Election Division
+- Elementary
+- Employee Assistance
+- Enforcement
+- Engineering
+- Enterprise Applications
+- Environment
+- Equity
+- Exam
+- Execution of Courts
+- Executive
+- Fair Housing Commission
+- Field Services
+- Film & Special Events
+- Finance Commission Program
+- Fire Alarm
+- Firefighter Safety, Health and Wellness
+- Fleet Services
+- General Management
+- General Service/Payroll
+- Goods Procurement
+- Government Services
+- Grants Administration
+- Grants Monitoring
+- Health Benefits & Insurance
+- Health Insurance
+- High
+- Highway Field Operations
+- Homeland Security
+- Housing Development & Services
+- Housing Trust Fund
+- Human Rights
+- Human Services Office
+- IGR
+- ISD Administration & Finance
+- ISD Commissioner's Office
+- Immigrant Advancement
+- Internal Affairs Oversight Panel (IOAP)
+- K-12
+- K-8
+- LCA
+- Labor Relations
+- Law Operations
+- Legislative Financial Support
+- Legislative Support
+- Library Administration
+- Licensing_Board
+- Listing Board
+- Litigation
+- MBTA
+- Mayor's Administration
+- Mayor's Communications
+- Mayor's Executive
+- Mayor's Office of Community Safety
+- Mayor's Office of Housing Administration
+- Mayor's Policy & Planning
+- Medicare Payments
+- Middle
+- Middle/High
+- Neighborhood Serv
+- New Urban Mechanics
+- ONS Administration
+- OPAT Commission
+- OPEB
+- Office of Civic Organizing
+- Other State Assessments
+- PFD Capital Construction
+- PM Administration
+- PWD Commissioner's Office
+- Parking Clerk
+- Parks & Recreation Administration
+- Parks Design & Construction
+- Parks Operations
+- Payment Services
+- Pensions
+- Pensions & Annuities - City
+- Personnel
+- Police Commissioner's Office
+- Policy & Planning
+- Program & Partnerships
+- Public Health Commission
+- Purchasing Administration
+- Real Estate Management & Sales
+- Research & Special Collections
+- Reserve
+- Reserve for Collective Bargaining City
+- Revenue Monitoring
+- Risk Management
+- Risk Retention Reserve
+- School Committee
+- Security Systems
+- Small & Local Business
+- Snow & Winter Management
+- Special Collections
+- Special Ed, K-12
+- Sports & Fitness
+- Strategy
+- Street Lights
+- Student Support Services (C)
+- Suffolk County Sheriff Dept
+- Superintendent
+- Tourism
+- Tourism Administration
+- Traffic Commissioner's Office
+- Traffic Enforcement
+- Traffic Management & Engineering
+- Traffic Operations
+- Treasury Accounting
+- Treasury Administration
+- Trust
+- Turnaround and Transformation
+- Unemployment Comp
+- Valuation
+- Veterans' Services
+- Vital Statistics
+- Waste Reduction
+- Women's Commission Program
+- Workers' Comp
+- Workers' Compensation Fund
+- Youth & Family Services
+- Youth Employment and Opportunity Admin
+
+===== End of Report =====

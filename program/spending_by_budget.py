@@ -392,7 +392,7 @@ def main():
     #generate_changes("./data/fy25-adopted-operating-budget.csv")
     #generate_volatile_changes("./data/fy25-adopted-operating-budget.csv")
     #generate_stable_changes("./data/fy25-adopted-operating-budget.csv")
-    generate_combined_changes("./data/fy25-adopted-operating-budget.csv")
-    
+    #generate_combined_changes("./data/fy25-adopted-operating-budget.csv")
+    pass
 
 main()
