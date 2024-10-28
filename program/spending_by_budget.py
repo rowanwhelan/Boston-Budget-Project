@@ -130,10 +130,91 @@ def generate_changes(path):
     # Display the plot with tight layout
     plt.tight_layout()
     plt.show()
+    return
+    
+def generate_volatile_changes(path):
+     # Create DataFrame
+    df = pd.read_csv(path)
+
+    # Ensure spending columns are numeric
+    for col in ['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget']:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+    # Drop rows with missing values in critical columns
+    df.dropna(subset=['FY22 Actual Expense', 'FY23 Actual Expense', 'FY24 Appropriation', 'FY25 Budget'], inplace=True)
+
+    # Aggregate spending by program (sum amounts for programs with multiple entries)
+    df_grouped = df.groupby('Program', as_index=False).sum()
+
+    # Calculate year-over-year changes for each program
+    df_grouped['Change_22_23'] = df_grouped['FY23 Actual Expense'] - df_grouped['FY22 Actual Expense']
+    df_grouped['Change_23_24'] = df_grouped['FY24 Appropriation'] - df_grouped['FY23 Actual Expense']
+    df_grouped['Change_24_25'] = df_grouped['FY25 Budget'] - df_grouped['FY24 Appropriation']
+
+    # Sum the absolute changes for each program to determine total change
+    df_grouped['Total_Change'] = df_grouped[
+        ['Change_22_23', 'Change_23_24', 'Change_24_25']
+    ].abs().sum(axis=1)
+
+    # Get the top 10 programs by total change
+    top_programs = df_grouped.nlargest(10, 'Total_Change')['Program']
+
+    # Reshape data for plotting
+    change_data = df_grouped.melt(
+        id_vars=['Program'], 
+        value_vars=['Change_22_23', 'Change_23_24', 'Change_24_25'], 
+        var_name='Change_Year', value_name='Change_Amount'
+    )
+
+    # Filter to include only the top 10 programs
+    change_data = change_data[change_data['Program'].isin(top_programs)]
+
+    # Ensure 'Change_Year' is ordered correctly
+    change_data['Change_Year'] = pd.Categorical(
+        change_data['Change_Year'], 
+        categories=['Change_22_23', 'Change_23_24', 'Change_24_25'], 
+        ordered=True
+    )
+
+    # Plot the data
+    plt.figure(figsize=(12, 8))
+    for program, data in change_data.groupby('Program'):
+        plt.plot(data['Change_Year'], data['Change_Amount'], marker='o', label=program)
+
+    # Use integer formatting for y-axis
+    def int_formatter(x, _):
+        return f'{int(x):,}'  # Adds commas for readability
+
+    plt.gca().yaxis.set_major_formatter(FuncFormatter(int_formatter))
+
+    # Adjust y-axis for better readability
+    y_min, y_max = change_data['Change_Amount'].min(), change_data['Change_Amount'].max()
+    plt.ylim(y_min * 1.1, y_max * 1.1)  # Add padding to the range
+
+    # Rotate x-axis labels for readability
+    plt.xticks(rotation=45)
+
+    # Add title and axis labels
+    plt.title('Top 10 Programs: Spending Change Over Time', fontsize=16)
+    plt.xlabel('Year-to-Year Change', fontsize=14)
+    plt.ylabel('Change Amount ($)', fontsize=14)
+
+    # Move the legend outside the plot for better readability
+    plt.legend(title='Program', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+    # Add grid for better visualization
+    plt.grid(True, linestyle='--', alpha=0.7)
+
+    # Display the plot with a tight layout
+    plt.tight_layout()
+    plt.show()
+    return
+
 
 def main():
-    generate_visualization("./data/fy25-adopted-operating-budget.csv")
+    #generate_visualization("./data/fy25-adopted-operating-budget.csv")
     #generate_changes("./data/fy25-adopted-operating-budget.csv")
+    generate_volatile_changes("./data/fy25-adopted-operating-budget.csv")
     
 
 main()
