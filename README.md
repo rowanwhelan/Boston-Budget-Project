@@ -13,7 +13,7 @@ We will visualize this data using scatter plots of two different features graphe
 The current testing plan is to exclude 20% of our data at random as testing data. Then once we have a model that is appropriately trained on the testing and training data, we will predict the upcoming fiscal year's budget and compare it with the approved budget.\
 
 Our Midterm deliverable will include:
-  All of the data we intend to use tAo create this presentation cleaned and visualizable.
+  All of the data we intend to use to create this presentation cleaned and visualizable.
   A github workflow which runs and tests these visualization methods.
   A README on how to get the code running and a MAKEFILE to download dependencies, test the code, and run the processes.\
 
