@@ -1,0 +1,50 @@
+===== General Expense Category Statistics =====
+Total Number of Categories: 7
+Total Spending (All Years): $16,652,547,144.61
+Average Spending per Category: $594,733,826.59
+Standard Deviation in Spending: $741,083,824.22
+
+===== Highest and Lowest Spending Categories =====
+Highest Spending Category: Personnel Services ($8,420,974,086.06)
+Lowest Spending Category: Equipment ($150,647,254.23)
+
+===== Year-wise Spending Statistics =====
+
+FY22 Actual Expense:
+  Total: $3,829,375,037.78
+  Mean: $547,053,576.83
+  Std Dev: $689,909,706.36
+  Min: $30,203,926.57
+  Max: $1,957,857,738.13
+
+FY23 Actual Expense:
+  Total: $4,037,893,106.27
+  Mean: $576,841,872.32
+  Std Dev: $721,065,316.82
+  Min: $39,543,066.45
+  Max: $2,036,400,470.19
+
+FY24 Appropriation:
+  Total: $4,244,402,356.34
+  Mean: $606,343,193.76
+  Std Dev: $746,772,279.58
+  Min: $38,934,845.12
+  Max: $2,126,586,071.73
+
+FY25 Budget:
+  Total: $4,540,876,644.22
+  Mean: $648,696,663.46
+  Std Dev: $806,587,994.13
+  Min: $41,317,751.68
+  Max: $2,300,129,806.01
+
+===== List of All Expense Categories =====
+- Contractual Services
+- Current Charges & Obligations
+- Equipment
+- Fixed Expenses
+- Other Expenses
+- Personnel Services
+- Supplies & Materials
+
+===== End of Report =====
