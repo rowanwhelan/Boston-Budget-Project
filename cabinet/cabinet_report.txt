@@ -1,0 +1,63 @@
+===== General Cabinet Statistics =====
+Total Number of Cabinets: 20
+Total Spending (All Years): $16,652,547,144.61
+Average Spending per Cabinet: $208,156,839.31
+Standard Deviation in Spending: $393,675,020.03
+
+===== Highest and Lowest Spending Cabinets =====
+Highest Spending Cabinet: Education Cabinet ($5,641,387,382.52)
+Lowest Spending Cabinet: OPAT Cabinet ($4,785,749.80)
+
+===== Year-wise Spending Statistics =====
+
+FY22 Actual Expense:
+  Total: $3,829,375,037.78
+  Mean: $191,468,751.89
+  Std Dev: $358,580,237.31
+  Min: $717,743.30
+  Max: $1,294,211,892.80
+
+FY23 Actual Expense:
+  Total: $4,037,893,106.27
+  Mean: $201,894,655.31
+  Std Dev: $380,353,328.55
+  Min: $1,133,744.20
+  Max: $1,376,551,456.72
+
+FY24 Appropriation:
+  Total: $4,244,402,356.34
+  Mean: $212,220,117.82
+  Std Dev: $401,566,683.59
+  Min: $1,452,985.82
+  Max: $1,444,691,352.00
+
+FY25 Budget:
+  Total: $4,540,876,644.22
+  Mean: $227,043,832.21
+  Std Dev: $434,199,830.66
+  Min: $1,481,276.48
+  Max: $1,525,932,681.00
+
+===== List of All Cabinets =====
+- Arts & Culture Cabinet
+- Community Engagement Cabinet
+- Economic Opportunity & Inclusion Cabinet
+- Education Cabinet
+- Environment, Energy & Open Space Cabinet
+- Equity & Inclusion Cabinet
+- Finance Cabinet
+- Housing Cabinet
+- Human Services Cabinet
+- Information & Technology Cabinet
+- Mayor's Cabinet
+- Non-Mayoral Departments
+- OPAT Cabinet
+- Operations Cabinet
+- Other
+- People Operations Cabinet
+- Public Health Cabinet
+- Public Safety Cabinet
+- Streets Cabinet
+- Worker Empowerment Cabinet
+
+===== End of Report =====
