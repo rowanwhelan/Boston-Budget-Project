@@ -1,0 +1,9 @@
+*Work actually done
+I added data showing projected and revised revenue for the city of Philidelphia along with visualizations.
+Will be adding budgets for other major metropolitan cities.
+Also added data for demographics of the city of boston, housing index prices over time, and poverty status over time.
+
+*Plans and ideas
+There were interesting trends within the projected vs. revised budgets that I'd like to explore within other major cities in the us.
+I also would like to check budgets compared to market indicators over time. (Housing index, S&P, CPI)
+Could also be cool to check out other diferentiating trends compared to budget like climate and if they have any effect in different cities.
