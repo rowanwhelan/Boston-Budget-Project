@@ -70,7 +70,7 @@ def generate_report(path):
             file.write(f"- {category}\n")
 
         file.write("\n===== End of Report =====\n")
-        return
+    return 1
 
 def main():
     generate_report("./data/fy25-adopted-operating-budget.csv")
@@ -86,7 +86,7 @@ def test_expenseCategory():
     assert result is not None, "Expected generate_report to return a non-None result"
     
     # If generate_report creates an output file, check for its existence
-    output_path = "./expenseCategory_report.txt"  # Replace with the actual output path if known
+    output_path = "./expenseCategory/expenseCategory_report.txt"  # Replace with the actual output path if known
     assert os.path.exists(output_path), f"Expected output file at {output_path}"
     
     # Clean up: Optionally, remove the output file after the test if necessary

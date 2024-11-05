@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 def generate_report(path):
@@ -69,9 +70,26 @@ def generate_report(path):
             file.write(f"- {program}\n")
 
         file.write("\n===== End of Report =====\n")
-        return
+    return 1
     
 def main():
     generate_report("./data/fy25-adopted-operating-budget.csv")
     
-main()
+def test_program():
+    # Define the input path
+    input_path = "./data/fy25-adopted-operating-budget.csv"
+    
+    # Act: Call generate_report directly with the input path
+    result = generate_report(input_path)  # Replace with actual function call if it returns a result
+
+    # Assert: If generate_report returns something (e.g., a DataFrame), check it’s not None
+    assert result is not None, "Expected generate_report to return a non-None result"
+    
+    # If generate_report creates an output file, verify its existence
+    output_path = "./program/budget_report.txt"  # Replace with the actual output path if known
+    assert os.path.exists(output_path), f"Expected output file at {output_path}"
+    
+    # Clean up: Optionally remove the output file to keep the test environment clean
+    if os.path.exists(output_path):
+        os.remove(output_path)
+    

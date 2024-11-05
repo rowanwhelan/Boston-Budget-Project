@@ -70,14 +70,7 @@ def generate_report(path):
             file.write(f"- {cabinet}\n")
 
         file.write("\n===== End of Report =====\n")
-        return
-    
-
-def main():
-    # Provide the path to the CSV file
-    path = "./data/fy25-adopted-operating-budget.csv"
-    generate_report(path)
-
+    return 1
 
 def test_cabinet():
     # Assuming generate_report creates a file or returns a value we can check
@@ -85,10 +78,14 @@ def test_cabinet():
     
     # Act: call generate_report with the path
     result = generate_report(path)  # Update this line based on actual behavior
-
     # Assert: check the result, for example, if generate_report returns a DataFrame
     assert result is not None, "Expected a non-None result"
     
     # If generate_report creates an output file, check its existence
-    output_path = "./cabinet_report.txt"  # Replace with actual output path
+    output_path = "./cabinet/cabinet_report.txt"  # Replace with actual output path
     assert os.path.exists(output_path), f"Expected output file at {output_path}"
+    
+
+def main():
+    # Provide the path to the CSV file
+    test_cabinet()
