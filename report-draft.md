@@ -1,5 +1,6 @@
 # Boston Budgetary Analysis Project
 ## Introduction
+https://youtu.be/_ajM9b9Qr54
 For our CS 506: Data Science Tools and Applications our group will be analysing budget data for the US city of Boston. We will both observe historical trends as well as expectations for the upcoming fiscal year 2025. Our analysis will focus largely on contextualizing the budget through polished visualization techniques. Secondarily, we hope to build a model capable of predicting annual budgetary allotments. Depending on the depth of our data, this may or may not be feasible. For example, one of our datasets only products four years worth of data, and this by itself would not provide enough data for accurate modelling or testing. Nonetheless, our goal is to find patterns in the way the city of Boston spends its money and how Boston plans to allocate funding.
 
 ## Data
