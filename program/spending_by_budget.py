@@ -210,7 +210,7 @@ def generate_volatile_changes(path):
 
     # Print the most volatile programs and their change values
     #print("\nTop 10 Most Volatile Programs (by absolute change):")
-    p#rint(top_volatile[['Program', 'Total_Change']])
+    #print(top_volatile[['Program', 'Total_Change']])
 
     # Display the plot with a tight layout
     plt.tight_layout()
