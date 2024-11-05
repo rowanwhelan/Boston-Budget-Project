@@ -77,4 +77,6 @@ def main():
     path = "./data/fy25-adopted-operating-budget.csv"
     generate_report(path)
 
-main()
+def test_cabinet():
+    main()
+    
