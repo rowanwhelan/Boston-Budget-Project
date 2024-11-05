@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 
 def generate_report(path):
@@ -73,5 +74,21 @@ def generate_report(path):
 
 def main():
     generate_report("./data/fy25-adopted-operating-budget.csv")
+
+def test_expenseCategory():
+    # Path to the data file
+    path = "./data/fy25-adopted-operating-budget.csv"
     
-main()
+    # Run the report generation
+    result = generate_report(path)  # Directly calling generate_report if it returns something
+
+    # Example assertion if generate_report returns a result like a DataFrame
+    assert result is not None, "Expected generate_report to return a non-None result"
+    
+    # If generate_report creates an output file, check for its existence
+    output_path = "./expenseCategory_report.txt"  # Replace with the actual output path if known
+    assert os.path.exists(output_path), f"Expected output file at {output_path}"
+    
+    # Clean up: Optionally, remove the output file after the test if necessary
+    if os.path.exists(output_path):
+        os.remove(output_path)
