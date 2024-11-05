@@ -1,0 +1,52 @@
+        ******EXPENSE CATEGORY******
+--Expense Category Breakdown--
+    Purpose is to provide a comprehensive statistical breakdown of spending by expense category (e.g., Personnel Services, Equipment, etc.) 
+    across multiple fiscal years (FY22–FY25). This was accomplished by data cleaning and aggregation to 1. ensure consistency by converting 
+    spending columns to numeric and handling missing values and 2. to calculate statistics for spending across all years. Provides an 
+    overview of highest and lowest spending categories, and year-over-year spending changes by category, enabling analysis of budget trends 
+    and spending stability.
+
+--Expense Category Visuals--
+	Purpose is to create visualizations that illustrate how the FY25 budget is distributed across various expense categories and how spending 
+    has changed over the past few years. The FY25 Budget Pie Chart shows the percentage breakdown of budget allocation by category, making it 
+    easier to identify which areas receive significant portions of the budget. The pie chart visualizing the FY25 budget emphasizes how much of 
+    the budget is concentrated within a few categories (Personnel Services and Contractual Services). Smaller categories are likely insignificant 
+    in proportion, highlighting the City’s focus on human resources and essential services. The Spending Over Time by Expense Category line chart 
+    demonstrates budget changes across years (FY22-FY25), allowing the identification of trends and shifts in spending priorities over time.
+
+--Expense Category Report--
+    This report lists total and average spending, year-to-year changes, and notable high- and low-spending categories, making it accessible to understand budget patterns. 
+    - Overall spending trends: Personnel Services had the highest spending, reaching $8.42 billion, while Equipment had the lowest at $150.6 million. This substantial 
+        difference (as well as the standard deviation of 741.1 million) suggests a strategic prioritization of personnel-related expenses over other operational needs like equipment.
+    - Annual spending trends: Each year from FY22 to FY25 shows an increase in total spending. Per-year average spending also steadily increased each year, reflecting either 
+        an expanding budget or rising operational costs. The consistent increase in maximum spending year-to-year (with Personnel Services being the top category) suggests 
+        this expense category’s demand is growing or that more resources are allocated to support personnel needs.
+    - Spending distribution: The most significant expenditures are in Personnel Services and Contractual Services, while Equipment has consistently the lowest spending. 
+        This may reflect a prioritization towards operational continuity (people and contracts) over material assets or one-time expenses. Variance (as indicated by 
+        the standard deviation) increases over the years, meaning that as the budget grows, disparities between the highest- and lowest-spending categories also widen.
+
+-----------------------------------------------------------------------------------
+        ******CABINET******
+--Cabinet Breakdown--
+    Purpose is to provide a comprehensive statistical breakdown of spending by city cabinet (i.e., departments or divisions within the city government) across multiple 
+    fiscal years (FY22–FY25). This was accomplished by data cleaning and aggregation to 1. ensure consistency by converting spending columns to numeric and handling missing 
+    values and 2. to calculate statistics for spending across all years. Provides an overview of highest and lowest spending cabinets, and year-over-year spending changes 
+    by cabinet, enabling analysis of budget trends and spending stability.
+
+--Cabinet Visuals--
+	Purpose is to create visualizations that illustrate how the FY25 budget is distributed across various city cabinets and how spending has changed over the past few years. 
+    The FY25 Budget Pie Chart shows the percentage breakdown of budget allocation by cabinet, making it easier to identify which receive significant portions of the budget. 
+    The Spending Over Time by Cabinet line chart demonstrates budget changes across years (FY22-FY25), allowing the identification of trends and shifts in spending priorities over time.
+
+--Cabinet Report--
+    This report lists total and average spending, year-to-year changes, and notable high- and low-spending cabinets, making it accessible to understand budget patterns. 
+    - Overall spending trends: Certain cabinets, likely those handling extensive operational tasks (such as Public Safety, Public Works), are high-spending, while other administrative 
+        or less resource-intensive cabinets spend significantly less. The cabinet’s spending reflects similar totals to expense categories, but it’s spread across fewer entities (7 expense 
+        categories versus more cabinets), resulting in less extreme differences in the average and standard deviations.
+    - Top and bottom spending cabinets: The cabinet with the highest spending likely corresponds to a key service-delivering department (e.g., Public Safety, which might include police, 
+        fire departments). Cabinets with lower spending are likely more specialized departments or those not requiring as many resources, such as certain administrative or regulatory offices. 
+        This discrepancy indicates an operational focus on public-facing services.
+    - Trends over time: Just as expense categories increase annually, cabinet allocations likely reflect growing budgets. Cabinets associated with essential city functions 
+        (e.g., housing, public safety, transportation) might show consistent growth, aligned with their responsibility for maintaining the city’s critical infrastructure and services. 
+        This growth trajectory signals that as budgetary resources expand, so does investment in foundational services that support Boston’s residents, aligning with our Team’s goal 
+        of improving quality of life.
