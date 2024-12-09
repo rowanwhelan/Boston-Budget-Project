@@ -29,8 +29,12 @@ def generate_visualization(path):
     )
     fig.update_traces(textinfo='label+percent', hoverinfo='label+value+percent')
 
+    # save as html too
+    fig.write_html(os.path.join(output_dir, 'fy25_budget_projections_by_cabinet_interactive.html'))
     # Save the chart as a PNG file
-    fig.write_image(os.path.join(output_dir, 'fy25_budget_projections_by_cabinet.png'))
+    fig.write_image(os.path.join(output_dir, 'fy25_budget_projections_by_cabinet_interactive.png'))
+
+    fig.show()
 
 def generate_changes(path):
     # Load data
@@ -65,8 +69,12 @@ def generate_changes(path):
     )
     fig.update_traces(mode='lines+markers', hovertemplate='%{x}: $%{y:,}')
 
+    # save as html too
+    fig.write_html(os.path.join(output_dir, 'spending_over_time_by_cabinet_interactive.html'))
     # Save the chart as a PNG file
-    fig.write_image(os.path.join(output_dir, 'spending_over_time_by_cabinet.png'))
+    fig.write_image(os.path.join(output_dir, 'spending_over_time_by_cabinet_interactive.png'))
+
+    fig.show()
 
 def main():
     # Provide the path to the CSV file

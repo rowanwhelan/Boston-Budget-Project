@@ -34,10 +34,12 @@ def generate_visualization(path):
     )
 
     # Save as HTML
-    fig.write_html(os.path.join(output_dir, 'interactive_fy25_budget_pie_chart.html'))
+    fig.write_html(os.path.join(output_dir, 'fy25_budget_by_expenseCategory_PieChart_interactive.html'))
 
     # Save as static image
-    fig.write_image(os.path.join(output_dir, 'fy25_budget_pie_chart.png'))
+    fig.write_image(os.path.join(output_dir, 'fy25_budget_by_expenseCategory_PieChart_interactive.png'))
+
+    fig.show()
 
 def generate_changes(path):
     # Load data
@@ -74,10 +76,12 @@ def generate_changes(path):
     fig.update_xaxes(title='Year')
 
     # Save as HTML
-    fig.write_html(os.path.join(output_dir, 'interactive_spending_over_time.html'))
+    fig.write_html(os.path.join(output_dir, 'expenseCategory_spending_over_time_interactive.html'))
 
     # Save as static image
-    fig.write_image(os.path.join(output_dir, 'spending_over_time.png'))
+    fig.write_image(os.path.join(output_dir, 'expenseCategory_spending_over_time_interactive.png'))
+
+    fig.show()
 
 def main():
     # Provide the path to the CSV file
