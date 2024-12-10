@@ -15,11 +15,9 @@ We utilized a mix of two primary datasets which detail the operating and capital
 These were supplemented with other datasets containing additional context about spending patterns and funding priorities. In addition, we looked at budgets and expense of other major metropoliton cities and datasets containing information on Boston's geographic data. 
 
 ### Data Processing 
-Our data cleaning process included:
+Our general data cleaning process included:
 1. **Converting Budget Values**: Removing commas and converting budget columns to numerical format.
 2. **Handling Missing Values**: Using forward and backward filling methods to address gaps.
-3. **Feature Engineering**: Creating lag features to aid in predictive modeling.
-4. **One-Hot Encoding**: Encoding categorical variables to improve model performance.
 
 ---
 
@@ -210,7 +208,68 @@ The primary model implemented in `budget_modeling.py` is a Gradient Boosting Reg
 5. **Visualization and Interpretability:**
    - Most effort was dedicated to creating effective visualizations to support policy discussions. The model's outputs, while not flawless, are highly interpretable and align with the project's goals.
 
+#### Components of the Model
+
+1. **Data Preprocessing**:
+   - **Function**: `preprocess_data`
+   - **Objective**: Prepare raw budget data for analysis.
+   - **Steps**:
+     - Converts wide-format data to long-format for time-series analysis.
+     - Cleans data by removing commas, converting types, and filling missing values.
+     - Ensures consistency by making the `Year` column numeric.
+
+2. **Visualization of Trends**:
+   - **Function**: `interactive_city_trends`
+   - **Objective**: Create interactive visualizations of budget trends by city.
+   - **Features**:
+     - Uses Plotly to generate interactive line charts.
+     - Allows filtering by variables and cities for exploratory analysis.
+
+3. **Feature Engineering**:
+   - **Functions**: `prepare_data_for_gbm_all`, `prepare_data_for_gbm_category`
+   - **Objective**: Prepare data for modeling.
+   - **Steps**:
+     - Creates lag features (`Lag1`, `Lag2`) to capture historical dependencies.
+     - Applies one-hot encoding to categorical variables (e.g., `Variable`).
+     - Splits data into training and testing sets.
+
+4. **Model Training**:
+   - **Function**: `train_gbm`
+   - **Objective**: Train a Gradient Boosting Regressor.
+   - **Steps**:
+     - Fits the model to the training data.
+     - Evaluates using Mean Squared Error (MSE).
+
+5. **Interactive Prediction Visualization**:
+   - **Function**: `visualize_predictions_interactive`
+   - **Objective**: Visualize actual and predicted budgets interactively.
+   - **Features**:
+     - Plots predictions alongside actual values.
+     - Provides dropdown filters for cities and variables.
+
+6. **Future Predictions**:
+   - **Function**: `generate_future_predictions`
+   - **Objective**: Predict future budgets for selected cities.
+   - **Steps**:
+     - Uses the trained model to predict year-by-year budgets.
+     - Builds on prior predictions for iterative forecasting.
+
+7. **Future Budget Visualization**:
+   - **Function**: `visualize_boston_predictions`
+   - **Objective**: Display forecasted budgets interactively.
+   - **Features**:
+     - Includes traces for actual and predicted data.
+     - Adds dropdowns to filter by variables.
+
+8. **Workflow Integration**:
+   - **Function**: `main_workflow`
+   - **Objective**: Integrate all components into a seamless pipeline.
+   - **Steps**:
+     - Preprocesses data, trains models, generates forecasts, and visualizes results.
+
 ---
+
+
 ## Geographical Analysis 
 TODO
 
@@ -224,7 +283,9 @@ TODO
 - **Mean Squared Error (MSE) on Test Set**: 30,000 for Boston-specific model
 
 ### Key Visualizations 
-
+Actual Versus Predicted Budgets for General Expenditures 
+[For Boston](./models/model_examples/Example1.png)
+[For Other Major Cities](./models/model_examples/Example2.png)
 
 ## Conclusions
 The Boston Budgetary Analysis Project offers critical insights into the city’s financial patterns. By leveraging machine learning and visualization, the analysis highlights key trends, including resilience to economic challenges and consistent growth in personnel expenses. While limitations exist, such as the model's inability to handle unforeseen spending spikes, the findings provide actionable intelligence for policymakers. Future efforts could focus on enhancing predictive accuracy and addressing data sparsity issues to refine the model’s utility across diverse scenarios. Overall, this project lays the groundwork for informed fiscal decision-making and sets a precedent for similar studies in other urban contexts.
