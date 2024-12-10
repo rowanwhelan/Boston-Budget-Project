@@ -1,0 +1,22 @@
+This is an explaination of the methods used in budget_modelling.py
+As of right now budget_trends is deprecated and not being developed (we should remove it for the final submission)
+
+These graphs are meant to be used as tools, the model isn't incredibly powerful, but it is good at predicting trends 
+(for example it will catch on if the city starts spending more and more on a specific budgetary item)
+The reason I chose to model the data as roughly as I did was because of the format of the data and the project specifications.
+It's clear that our output is supposed to be used to inform policy decisions, so on a macro policy level the more valuable trait is to be less correct on a micro scale but very effective on a larger scale.
+A great example of this you can talk about in the paper is general expenditures for boston: the model isn't correct about any of the individual yearly values over the 20 years
+BUT it does a really great job of tracking the trend. Near 2008 the data peaks before it starts to decrease (likely because of the financial crisis) and the model tracks this and similarly decreases. 
+Then as the value starts to increase again the model tracks this as well.
+** this is pictured individually in /model_examples/Example1.png and for every city in /model_examples/Example2.png so you can add it to the final presentation **
+One tradeoff of this design decision is that the model isn't super great at catching onto changes with little forewarning (one good example one be things like an increase in healthcare spending as a result of the pandemic)
+Further the model performs very poorly on data where the trend is unclear (for example in on case it completely fails to predict New York's total budget )
+Finally some of the cities don't use certain metrics to measure their data. IN THAT CASE THE MODEL WILL BEHAVE STRANGELY, IT SHOULD NOT BE USED ON UNDEFINED DATA THAT HAS BEEN CLEANED SO IT IS USABLE 
+
+One concern some less in the know might raise is that the model is being used to produce values on things that were within its training set.
+But it is important to say that the model only predicts based on previous values (therefore it never had access to the correct answers during its training)
+It will also probabily be good to mention the fact that most of effort was put into good visualization rather than all knowing models because that fit the goals of the project better
+
+Improvements:
+    Changed the model to take year and one-hot encoding of the budget type into account 
+

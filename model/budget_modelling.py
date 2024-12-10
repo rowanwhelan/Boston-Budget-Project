@@ -9,7 +9,9 @@ import seaborn as sns
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+from sklearn.preprocessing import OneHotEncoder
 
+# Step 1: Clean the data so it can be used 
 def preprocess_data(data):
     # Melt the wide-format DataFrame into long format for easier analysis
     data_long = data.melt(id_vars=["Variable", "Year"], 
@@ -53,7 +55,7 @@ def interactive_city_trends(data):
     
     fig.show()
 
-# Step 3: Analyze Trends with Prophet and Add Context
+"""# Step 3: Analyze Trends with Prophet and Add Context
 def analyze_trends(data, category):
     # Filter data for the selected category (City)
     city_data = data[data["City"] == category]
@@ -75,23 +77,76 @@ def analyze_trends(data, category):
     plt.show()
     
     return forecast
+"""
 
-# Step 4: Prepare Data for Gradient Boosting Model
-def prepare_data_for_gbm(data, category):
-    # Filter for the chosen city
-    city_data = data[data["City"] == category].copy()  # Explicitly create a copy
+# Step 3 and 7: Prepare Data for Gradient Boosting Model
+def prepare_data_for_gbm_all(data):
+    # Create lag features for all cities
     
-    # Create lag features for budget values to use as predictors
-    city_data.loc[:, "Lag1"] = city_data["Budget"].shift(1)
-    city_data.loc[:, "Lag2"] = city_data["Budget"].shift(2)
-    city_data.dropna(inplace=True)
+    data = data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
+ 
+    data["Lag1"] = data["Budget"].shift(1)
+    data["Lag2"] = data["Budget"].shift(2)
+    
+    # Apply the condition to set Lag1 and Lag2 to NaN based on index
+    data["Lag1"] = data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag1"], axis=1)
+    data["Lag2"] = data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag2"], axis=1)
+    data["Lag2"] = data.apply(lambda row: 0 if (row.name) % 22 == 1 else row["Lag2"], axis=1)
+    
+    data.dropna(inplace=True)
+    
+    # Apply one-hot encoding to the 'Variable' column
+    encoder = OneHotEncoder(sparse_output=False)
+    variable_encoded = encoder.fit_transform(data[["Variable"]])
+
+    # Convert encoded array to a DataFrame with appropriate column names
+    encoded_df = pd.DataFrame(variable_encoded, columns=encoder.get_feature_names_out(["Variable"]))
+
+    # Concatenate with existing lag features
+    data = pd.concat([data.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
     
     # Split into features and target
-    X = city_data[["Lag1", "Lag2"]]
-    y = city_data["Budget"]
+    X = data.drop(columns=["Budget", "Variable", "City"])
+    y = data["Budget"]
     
-    # Train-test split
+    # Train-test split (we will train on the entire dataset and predict on the same)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    return X_train, X_test, y_train, y_test
+
+def prepare_data_for_gbm_category(data, category):
+    # Filter for Boston city only
+    boston_data = data[data["City"] == category].copy()  # Explicitly create a copy
+    
+    boston_data = boston_data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
+    
+    # Create lag features for Boston data
+    boston_data["Lag1"] = boston_data["Budget"].shift(1)
+    boston_data["Lag2"] = boston_data["Budget"].shift(2)
+    
+    # Apply the condition to set Lag1 and Lag2 to NaN based on index
+    boston_data["Lag1"] = boston_data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag1"], axis=1)
+    boston_data["Lag2"] = boston_data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag2"], axis=1)
+    boston_data["Lag2"] = boston_data.apply(lambda row: 0 if (row.name) % 22 == 1 else row["Lag2"], axis=1)
+    
+    boston_data.dropna(inplace=True)
+    
+    # Apply one-hot encoding to the 'Variable' column
+    encoder = OneHotEncoder(sparse_output=False)
+    variable_encoded = encoder.fit_transform(boston_data[["Variable"]])
+
+    # Convert encoded array to a DataFrame with appropriate column names
+    encoded_df = pd.DataFrame(variable_encoded, columns=encoder.get_feature_names_out(["Variable"]))
+
+    # Concatenate with existing lag features
+    boston_data = pd.concat([boston_data.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
+    
+    # Split into features and target
+    X_boston = boston_data.drop(columns=["Budget", "Variable", "City"])
+    y_boston = boston_data["Budget"]
+    
+    # Train-test split for Boston
+    X_train, X_test, y_train, y_test = train_test_split(X_boston, y_boston, test_size=0.2, random_state=42)
     
     return X_train, X_test, y_train, y_test
 
@@ -106,17 +161,37 @@ def train_gbm(X_train, X_test, y_train, y_test):
     # Make predictions and evaluate
     y_pred = model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
-    print(f"Mean Squared Error: {mse}")
+    print(f"MSE:{mse}")
     
     return model
 
+# Step 6: Visualize the changes and the model
 def visualize_predictions_interactive(data, model):
     # Ensure data includes predictions for all cities
     data = data.copy()
-    data["Lag1"] = data.groupby("City")["Budget"].shift(1)
-    data["Lag2"] = data.groupby("City")["Budget"].shift(2)
+    
+    data = data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
+ 
+    data["Lag1"] = data["Budget"].shift(1)
+    data["Lag2"] = data["Budget"].shift(2)
+    
+    # Apply the condition to set Lag1 and Lag2 to NaN based on index
+    data["Lag1"] = data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag1"], axis=1)
+    data["Lag2"] = data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag2"], axis=1)
+    data["Lag2"] = data.apply(lambda row: 0 if (row.name) % 22 == 1 else row["Lag2"], axis=1)
+    
     data.dropna(inplace=True)
-    data["Predicted"] = model.predict(data[["Lag1", "Lag2"]])
+    
+    encoder = OneHotEncoder(sparse_output=False)
+    
+    # One-hot encode the 'Variable' column
+    categorical_encoded = encoder.fit_transform(data["Variable"].values.reshape(-1,1))
+    
+    encoded_df = pd.DataFrame(categorical_encoded, columns=encoder.get_feature_names_out(['Variable']))
+    data = pd.concat([data.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
+    print(data)
+    data["Predicted"] = model.predict(data.drop(columns=["Budget", "City", "Variable"]))
+    data.loc[(data["Lag1"] == 0) & (data["Lag2"] == 0), "Predicted"] = 0
 
     # Initialize lists for city buttons, variable buttons
     unique_cities = data["City"].unique()
@@ -190,7 +265,7 @@ def visualize_predictions_interactive(data, model):
                 "buttons": variable_buttons,
                 "direction": "down",
                 "showactive": True,
-                "x": 0.17,
+                "x": .32,
                 "y": 1.15,
                 "xanchor": "left",
             }
@@ -212,28 +287,198 @@ def visualize_predictions_interactive(data, model):
     # Show the figure
     fig.show()
 
+# Step 8: Generate predictions on the future
+def generate_future_predictions(data, model, category, start_year=2022, end_year=2022):
+    # Filter for the given city/category
+    city_data = data[data["City"] == category].copy()
+    
+    city_data = city_data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
+ 
+    city_data["Lag1"] = city_data["Budget"].shift(1)
+    city_data["Lag2"] = city_data["Budget"].shift(2)
+    
+    # Apply the condition to set Lag1 and Lag2 to NaN based on index
+    city_data["Lag1"] = city_data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag1"], axis=1)
+    city_data["Lag2"] = city_data.apply(lambda row: 0 if (row.name) % 22 == 0 else row["Lag2"], axis=1)
+    city_data["Lag2"] = city_data.apply(lambda row: 0 if (row.name) % 22 == 1 else row["Lag2"], axis=1)
+    
+    city_data.dropna(inplace=True)
+    
+    encoder = OneHotEncoder(sparse_output=False)
+    
+    # One-hot encode the 'Variable' column
+    categorical_encoded = encoder.fit_transform(city_data["Variable"].values.reshape(-1,1))
+    
+    encoded_df = pd.DataFrame(categorical_encoded, columns=encoder.get_feature_names_out(['Variable']))
+    
+    city_data = pd.concat([city_data.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
+    
+    city_data["Predicted"] = model.predict(city_data.drop(columns=["Budget", "City", "Variable"]))
+    city_data.loc[(city_data["Lag1"] == 0) & (city_data["Lag2"] == 0), "Predicted"] = 0
+    
+    city_data.dropna(inplace=True)
+    future_data = []
+    previous_prediction = 0
+    previous_previous_predicition = 0
+    for i in range(city_data.shape[0] // 22):
+        for year in range(start_year, end_year + 1):      
+            # Generate future predictions
+            future_row = {}
+            future_row["Variable"] = city_data.loc[i*22+1]["Variable"]
+            future_row["Year"] = year
+            future_row["City"] = category            
+            future_row["Budget"] = None
+            # Calculate the lags for the future data
+            if year-start_year == 0:
+                future_row["Lag1"] = city_data.loc[(i+1)*22+ year - start_year - 1]["Budget"]
+                future_row["Lag2"] = city_data.loc[(i+1)*22 + year - start_year - 2]["Budget"]
+            elif year-start_year == 1:
+                future_row["Lag1"] = previous_prediction
+                future_row["Lag2"] = city_data.loc[(i+1)*22 + year - start_year-2]["Budget"]
+            else:
+                future_row["Lag1"] = previous_prediction
+                future_row["Lag2"] = previous_previous_predicition
 
+            for col in city_data.columns:
+                if col.startswith("Variable_"):
+                    future_row[col] = city_data.loc[i*22 + 1, col]
+            
+            prediction = model.predict(pd.DataFrame([[future_row["Year"], future_row["Lag1"], future_row["Lag2"]] + \
+            [future_row[col] for col in future_row if col.startswith("Variable_")]], columns=["Year", "Lag1", "Lag2"] + \
+            [col for col in future_row if col.startswith("Variable_")]))[0]
+            future_row["Predicted"] = prediction
+                
+            previous_previous_predicition = previous_prediction
+            previous_prediction = prediction
+            if future_row["Lag1"] == 0 and future_row["Lag2"] == 0:
+                future_row["Predicted"] = 0
+            # Append the future row to the future data list
+            future_data.append(future_row)
+        
+    future_data = pd.DataFrame(future_data)
+
+    # Concatenate the historical data with the predicted future data
+    complete_data = pd.concat([city_data, future_data], ignore_index=True)
+    complete_data = complete_data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
+    complete_data.to_csv("output_csv", index=False)
+    return complete_data
+
+# Step 9: Graph the future predictions
+def visualize_boston_predictions(complete_data):
+    
+    # Define the unique variables in the data
+    unique_variables = complete_data["Variable"].unique().tolist()
+    unique_variables.append("All Variables")  # Add "All Variables" as an option
+    
+    # Create traces for actual and predicted values
+    traces = []
+    
+    for variable in unique_variables:
+        if variable == "All Variables":
+            # Create a trace for all variables combined
+            traces.append(
+                go.Scatter(
+                    x=complete_data["Year"],
+                    y=complete_data[f"Predicted"],
+                    mode="lines",
+                    name="Predicted - All Variables",
+                )
+            )
+        else:
+            # Filter data by the selected variable
+            filtered_data = complete_data[complete_data["Variable"] == variable]
+            
+            # Add actual trace
+            traces.append(
+                go.Scatter(
+                    x=filtered_data["Year"],
+                    y=filtered_data["Budget"],
+                    mode="lines",
+                    name=f"Actual - {variable}",
+                )
+            )
+            
+            # Add predicted trace
+            traces.append(
+                go.Scatter(
+                    x=filtered_data["Year"],
+                    y=filtered_data[f"Predicted"],
+                    mode="lines",
+                    name=f"Predicted - {variable}",
+                )
+            )
+    
+    # Create dropdown buttons for variables
+    variable_buttons = []
+    for variable in unique_variables:
+        visibility = [True] * len(traces)  # Show all traces initially
+        
+        # Filter the traces to show only for the selected variable
+        if variable != "All Variables":
+            visibility = [False if ( (str(variable)) not in (str(trace.name))) else True for trace in traces]
+        
+        variable_buttons.append(
+            dict(
+                label=variable,
+                method="update",
+                args=[{"visible": visibility}, {"title": f"Actual vs Predicted Budgets for {variable}"}],
+            )
+        )
+    
+    # Create the figure
+    fig = go.Figure(data=traces)
+    
+    # Add dropdown menu for variables
+    fig.update_layout(
+        updatemenus=[{
+            "buttons": variable_buttons,
+            "direction": "down",
+            "showactive": True,
+            "x": 0.17,
+            "y": 1.15,
+            "xanchor": "left",
+        }],
+        title="Actual vs Predicted Budgets for Boston (with Future Predictions)",
+        xaxis_title="Year",
+        yaxis_title="Budget",
+    )
+    
+    fig.show()
 
 def main_workflow():
     # Load the data
     data = pd.read_csv('data/MajorMetroCityBudgets.csv')
+    
+    # Step 1: Preprocess the Data
     data = preprocess_data(data)
-    
+
     # Step 2: Interactive graph for city trends
-    interactive_city_trends(data)
+    #interactive_city_trends(data)
     
+    # Step 3: Prepare data for gradient boosting model (Train on all cities)
+    #X_train, X_test, y_train, y_test = prepare_data_for_gbm_all(data)
+    
+    # Step 4: Train the gradient boosting model
+    #gbm_model_all = train_gbm(X_train, X_test, y_train, y_test)
+    
+    # Step 5: Visualize predictions interactively for all cities
+    #visualize_predictions_interactive(data, gbm_model_all)
+
     # Select a city (e.g., Boston MA) for analysis and prediction
     category = "MA: Boston"
     
-    # Step 3: Prepare data for gradient boosting model
-    X_train, X_test, y_train, y_test = prepare_data_for_gbm(data, category)
+    # Step 6: Prepare data for gradient boosting model (Train only on Boston)
+    X_train, X_test, y_train, y_test = prepare_data_for_gbm_category(data, category)
     
-    # Step 4: Train the gradient boosting model
-    gbm_model = train_gbm(X_train, X_test, y_train, y_test)
+    # Step 7: Train the gradient boosting model for Boston
+    gbm_model_boston = train_gbm(X_train, X_test, y_train, y_test)
     
-    # Step 5: Visualize predictions interactively
-    visualize_predictions_interactive(data, gbm_model)
-
+    # Step 8: Generate future predictions for Boston (2021-2030)
+    complete_data = generate_future_predictions(data, gbm_model_boston, category, start_year=2022, end_year=2025)
+    
+    # Step 9: Visualize the actual and predicted budgets for Boston (including future predictions)
+    visualize_boston_predictions(complete_data)
+    
 # Run the workflow
 if __name__ == "__main__":
     main_workflow()
