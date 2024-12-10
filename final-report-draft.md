@@ -7,7 +7,12 @@ For our CS 506: Data Science Tools and Applications, our group analyzed budget d
 ---
 
 ## Data
-The data that needs to be collected and visualized is a mix of two pre-provided datasets [detailing the operating](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba) and [capital budget of the city](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641), as well as various other datasets that may include information on domestic 
+We utilized a mix of two primary datasets which detail the operating and capital budget of the city:
+
+1. [Operating Budget](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba)
+2. [Capital Budget](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
+
+These were supplemented with other datasets containing additional context about spending patterns and funding priorities. In addition, we looked at budgets and expense of other major metropoliton cities and datasets containing information on Boston's geographic data. 
 
 ### Data Processing 
 Our data cleaning process included:
@@ -215,11 +220,11 @@ TODO
 ## Results 
 ### Key Findings 
 **Model Performance**
-
-- Mean Squared Error (MSE) on Test Set: **30,000 for Boston-specific model**
+- **Resilience in Economic Trends**: The budget shows a strong ability to adapt to economic cycles, evident in its post-2008 recovery and growth after initial pandemic disruptions.
+- **Mean Squared Error (MSE) on Test Set**: 30,000 for Boston-specific model
 
 ### Key Visualizations 
 
 
 ## Conclusions
-The project successfully identified patterns in Boston's budgeting trends and produced a predictive model for future budgets. While some limitations exist, such as short timeframes for data, the overall approach provides a framework for similar analyses in other cities.
+The Boston Budgetary Analysis Project offers critical insights into the city’s financial patterns. By leveraging machine learning and visualization, the analysis highlights key trends, including resilience to economic challenges and consistent growth in personnel expenses. While limitations exist, such as the model's inability to handle unforeseen spending spikes, the findings provide actionable intelligence for policymakers. Future efforts could focus on enhancing predictive accuracy and addressing data sparsity issues to refine the model’s utility across diverse scenarios. Overall, this project lays the groundwork for informed fiscal decision-making and sets a precedent for similar studies in other urban contexts.
