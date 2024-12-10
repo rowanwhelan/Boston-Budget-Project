@@ -283,7 +283,32 @@ The primary model implemented in `budget_modeling.py` is a Gradient Boosting Reg
 
 
 ## Geographical Analysis 
-TODO
+### Overview
+The geographic analysis component of this project examines spatial and demographic vulnerabilities across Boston neighborhoods using geographic information system (GIS) data. This analysis integrates climate vulnerability attributes, population metrics, and childcare affordability data to provide insights into how geographic and socioeconomic factors influence the city's fiscal needs and priorities.
+
+### Key Insights
+- **Medical Vulnerabilities**: The neighborhoods with higher medical illness counts, such as Mission Hill and Roxbury, were visualized using color-coded maps. These areas indicate a need for targeted healthcare infrastructure improvements and disaster response planning.
+- **Childcare Costs**: Childcare affordability varied significantly across neighborhoods, with affordability challenges being highest in low-income areas like Mattapan and Dorchester.
+- **Housing Dynamics**: Maps depicting housing vacancy rates highlighted clusters of vacant properties in neighborhoods like Hyde Park and Roslindale, suggesting potential areas for redevelopment or resource allocation.
+- **Poverty and Accessibility**: Correlation between high poverty levels and low English proficiency was observed in areas like East Boston, underlining the importance of accessible services.
+
+### Methodology
+
+1. **Data Preparation**:
+   - Loaded GIS data using `geopandas` and enriched it with demographic and childcare data.
+   - Processed raw data by renaming columns, handling missing values, and converting percentages and monetary values into usable formats.
+
+2. **Visualization**:
+   - Basic visualizations: Generated exploratory plots for neighborhood-level data.
+   - Advanced maps: Created thematic maps using `matplotlib` to display attributes like medical illness counts, poverty rates, and childcare costs.
+   - Geographic centroids: Calculated and labeled neighborhood centroids to annotate maps for clarity.
+
+3. **Integration**:
+   - Merged childcare affordability data and broader demographic information with GIS data.
+   - Used mapping tools to visualize disparities and geographic patterns.
+
+4. **Feature Graphing**:
+   - Automated the generation of feature-specific maps for all attributes, enabling comprehensive spatial analysis.
 
 
 
