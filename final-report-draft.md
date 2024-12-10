@@ -1,4 +1,5 @@
 # Boston Budgetary Analysis Project
+---
 ## Introduction
 https://youtu.be/_ajM9b9Qr54
 For our CS 506: Data Science Tools and Applications, our group analyzed budget data for the US city of Boston. We observed historical trends and created expectations for the upcoming fiscal year 2025. Our analysis focused largely on contextualizing the budget through polished visualization techniques. Additionally, we built a model capable of predicting annual budgetary allotments. Depending on the depth of our data, this was more feasible for certain datasets than others. For instance, one dataset only provided four years' worth of data, which limited accurate modeling. Nonetheless, we successfully uncovered patterns in Boston's budget allocation and spending strategies.
@@ -204,9 +205,13 @@ The primary model implemented in `budget_modeling.py` is a Gradient Boosting Reg
 5. **Visualization and Interpretability:**
    - Most effort was dedicated to creating effective visualizations to support policy discussions. The model's outputs, while not flawless, are highly interpretable and align with the project's goals.
 
-
+---
 ## Geographical Analysis 
+TODO
 
+
+
+---
 ## Results 
 ### Key Findings 
 **Model Performance**
