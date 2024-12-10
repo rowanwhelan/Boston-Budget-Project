@@ -53,10 +53,10 @@ def analyze_trends(data, category):
     fig, ax = plt.subplots(figsize=(10, 6))
 
     # Plot the actual data
-    ax.plot(prophet_data['ds'], prophet_data['y'], label='Actual Data', color='blue', marker='o')
+    ax.scatter(prophet_data['ds'], prophet_data['y'], label='Actual Data', color='blue', marker='o')
 
     # Plot the forecasted data (future)
-    ax.plot(forecast['ds'], forecast['yhat'], label='Predicted Data', linestyle='--', color='red')
+    ax.scatter(forecast['ds'], forecast['yhat'], label='Predicted D ata', linestyle='--', color='red')
     ax.fill_between(forecast['ds'], forecast['yhat_lower'], forecast['yhat_upper'], color='red', alpha=0.2, label='Confidence Interval')
 
     # Set the title and labels
@@ -110,32 +110,39 @@ def train_gbm(X_train, X_test, y_train, y_test):
 
 # Step 5: Visualization with Interactive Plotly
 def visualize_predictions_interactive(data, model, category):
+    # Filter the data for the current category (department)
     category_data = data[data['Expense Category'] == category].sort_values(by='year').reset_index(drop=True)
 
     # Generate lag features as before
     for i in range(1, 4):
         category_data[f'lag_{i}'] = category_data['expense'].shift(i)
     category_data.dropna(inplace=True)
-    
+
+    # Create the 'year_numeric' column as the year integer
+    category_data['year_numeric'] = category_data['year'].dt.year
+
+    # Prepare the feature set for prediction (use only the relevant features)
     X = category_data[['lag_1', 'lag_2', 'lag_3', 'year_numeric']]
 
-    # Validate feature names match
-    if list(X.columns) != model.feature_names_in_:
-        raise ValueError("Feature names during prediction do not match those during training.")
-    
+    # Ensure the order of columns is the same as the training set
+    X = X[model.feature_names_in_]
+
     # Add predictions to the DataFrame
     category_data['predicted'] = model.predict(X)
 
-    # Create the interactive plot using Plotly
+    # Create the interactive plot using Plotly, but only for the current department
     fig = px.line(category_data,
                   x='year_numeric',  # Use the 'year_numeric' column
                   y=['expense', 'predicted'],  # Plot actual vs predicted expense
                   labels={'expense': 'Actual Expense', 'predicted': 'Predicted Expense'},
                   title=f'Actual vs Predicted Expenses for {category}',
-                  line_shape='linear')
+                  line_shape='linear',  # Ensure the line is drawn between points
+                  markers=True)  # Show markers for each point
+
+    # Update the line to show the department name in the legend
+    fig.update_traces(name=f'{category} Actual vs Predicted', mode='lines+markers')
 
     # Add interactivity: highlight a point when clicked
-    fig.update_traces(mode='lines+markers', marker=dict(size=6))
     fig.update_layout(title=f'Interactive Expense Trend Analysis for {category}',
                       xaxis_title='Year',
                       yaxis_title='Expense',
@@ -143,6 +150,21 @@ def visualize_predictions_interactive(data, model, category):
 
     # Show the plot
     fig.show()
+
+def sub_workflow(data, category):
+    print(f"Processing category: {category}")
+
+    # Analyze trends using Prophet
+    analyze_trends(data, category)
+
+    # Prepare data for Gradient Boosting Model
+    X_train, X_test, y_train, y_test = prepare_data_for_gbm(data, category)
+
+    # Train the Gradient Boosting Model
+    model = train_gbm(X_train, X_test, y_train, y_test)
+
+    # Visualize predictions
+    visualize_predictions_interactive(data, model, category)
 
 # Main Workflow
 def main_workflow(data):
@@ -152,19 +174,8 @@ def main_workflow(data):
     categories = data['Expense Category'].unique()
 
     for category in categories:
-        print(f"Processing category: {category}")
-
-        # Analyze trends using Prophet
-        analyze_trends(data, category)
-
-        # Prepare data for Gradient Boosting Model
-        X_train, X_test, y_train, y_test = prepare_data_for_gbm(data, category)
-
-        # Train the Gradient Boosting Model
-        model = train_gbm(X_train, X_test, y_train, y_test)
-
-        # Visualize predictions
-        visualize_predictions_interactive(data, model, category)
+        sub_workflow(data, category)
+        break
 
 # Example usage (replace 'data.csv' with your file)
 data = pd.read_csv('data/fy25-adopted-operating-budget.csv')
