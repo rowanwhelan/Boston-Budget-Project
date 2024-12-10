@@ -92,3 +92,6 @@ def test_expenseCategory():
     # Clean up: Optionally, remove the output file after the test if necessary
     if os.path.exists(output_path):
         os.remove(output_path)
+
+if __name__ == "__main__":
+    main()

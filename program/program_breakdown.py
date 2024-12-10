@@ -93,3 +93,5 @@ def test_program():
     if os.path.exists(output_path):
         os.remove(output_path)
     
+if __name__ == "__main__":
+    main()

@@ -89,3 +89,6 @@ def test_cabinet():
 def main():
     # Provide the path to the CSV file
     test_cabinet()
+    
+if __name__ == "__main__":
+    main()
