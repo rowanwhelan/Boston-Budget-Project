@@ -10,11 +10,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from sklearn.preprocessing import OneHotEncoder
-import unittest
-from unittest.mock import patch, MagicMock
-import sys
-import os
-sys.path.append('models/budget_modelling.py')
 
 # Step 1: Clean the data so it can be used 
 def preprocess_data(data):
