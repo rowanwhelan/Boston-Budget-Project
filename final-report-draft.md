@@ -1,98 +1,22 @@
 # Boston Budgetary Analysis Project
 ## Introduction
 https://youtu.be/_ajM9b9Qr54
-For our CS 506: Data Science Tools and Applications our group will be analysing budget data for the US city of Boston. We will both observe historical trends as well as expectations for the upcoming fiscal year 2025. Our analysis will focus largely on contextualizing the budget through polished visualization techniques. Secondarily, we hope to build a model capable of predicting annual budgetary allotments. Depending on the depth of our data, this may or may not be feasible. For example, one of our datasets only products four years worth of data, and this by itself would not provide enough data for accurate modelling or testing. Nonetheless, our goal is to find patterns in the way the city of Boston spends its money and how Boston plans to allocate funding.
+For our CS 506: Data Science Tools and Applications, our group analyzed budget data for the US city of Boston. We observed historical trends and created expectations for the upcoming fiscal year 2025. Our analysis focused largely on contextualizing the budget through polished visualization techniques. Additionally, we built a model capable of predicting annual budgetary allotments. Depending on the depth of our data, this was more feasible for certain datasets than others. For instance, one dataset only provided four years' worth of data, which limited accurate modeling. Nonetheless, we successfully uncovered patterns in Boston's budget allocation and spending strategies.
 
 ## Data
 The data that needs to be collected and visualized is a mix of two pre-provided datasets [detailing the operating](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba) and [capital budget of the city](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641), as well as various other datasets that may include information on domestic 
 
+## Data Processing 
+Our data cleaning process included:
+1. **Converting Budget Values**: Removing commas and converting budget columns to numerical format.
+2. **Handling Missing Values**: Using forward and backward filling methods to address gaps.
+3. **Feature Engineering**: Creating lag features to aid in predictive modeling.
+4. **One-Hot Encoding**: Encoding categorical variables to improve model performance.
 
-## Final Report 
-### Reproducing Our Results
+---
 
-### Github Workflow and Test Code 
-
-### Visualizations
-
-### Data Processing 
-
-### Model
-
-### Results 
-
-
-
-## Midterm Deliverable 
-### Reproducing Our Results
-To reproduce our results, please do the following:
-
-#### Step 1: Set Up a Python Virtual Environment
-
-1. Navigate to the root directory of your project using the terminal or command prompt.
-    ```bash
-    cd path/to/your/project
-    ```
-
-2. Create a virtual environment by running the following command:
-    ```bash
-    python -m venv venv
-    ```
-
-3. Activate the virtual environment:
-    - On Windows:
-      ```bash
-      .\venv\Scripts\activate
-      ```
-
-    - On macOS and Linux:
-      ```bash
-      source venv/bin/activate
-      ```
-
-#### Step 2: Install Required Packages
-1. With the virtual environment activated, install the necessary packages as specified in your `requirements.txt` file:
-    ```bash
-    pip install -r requirements.txt
-    ```
-#### Step 3: Run Python Files
-1. Execute all Python scripts. Run all Python files located in our project's root directory by using the following command:
-    ```bash
-    for file in *.py; do python "$file"; done
-    ```
-
-   (Note: The above command is for Unix-like systems. If you are using Windows, you might need a different approach, such as using a batch script or running each file individually.)
-
-#### Step 4: Run Jupyter Notebooks
-1. Make sure Jupyter Notebook is installed. If not, install it using:
-    ```bash
-    pip install jupyter
-    ```
-2. Launch Jupyter Notebook:
-    ```bash
-    jupyter notebook
-    ```
-
-3. A web browser will open showing the Jupyter Notebook interface. Navigate to each `.ipynb` file one by one and run all the cells in each notebook to execute the code.
-
-### Visualizations
-#### Proposed vs. Revised (Final) Budgets by Year (Bar Plot)
-![](./Images/combined_proposed_revised_budgets.png)
-#### Proposed vs. Revised (Final) Budgets by Year (Line Plot)
-![](./Images/total_budget_trends.png)
-#### Proposed vs. Revised (Final) Budgets by Year *and* Category (Line Plot)
-![](./Images/proposed_vs_revised_budgets.png)
-
-### Key Statistics
+## Key Statistics and Initial Visualizations 
 #### General Expense Category Statistics
-##### Expense Categories
-- Contractual Services
-- Current Charges & Obligations
-- Equipment
-- Fixed Expenses
-- Other Expenses
-- Personnel Services
-- Supplies & Materials
-
 ---
 
 | Statistic                          | Value                      |
@@ -153,56 +77,140 @@ To reproduce our results, please do the following:
 | **FY25**    | $4,540,876,644.22      | $23,650,399.19   | $63,320,589.50     | $0.00    | $422,494,346.00   |
 
 ---
+### Initial Visualizations 
+TODO
 
-##### List of All Programs
+## Reproducing Our Results
+### For Initial Visualizations and Statistics 
+#### Step 1: Set Up a Python Virtual Environment
 
-| Program Column 1                | Program Column 2                  |
-|---------------------------------|-----------------------------------|
-| A&F                             | Pensions & Annuities - City       |
-| ASSET                           | Personnel                         |
-| Accounting                      | Police Commissioner's Office      |
-| Accounting/Quality Control      | Policy & Planning                 |
-| Accounts Payable                | Program & Partnerships            |
-| Accounts Receivable             | Public Health Commission          |
-| Admin & Finance                 | Purchasing Administration         |
-| Administration                  | Real Estate Management & Sales    |
-| Administration & Policy         | Research & Special Collections    |
-| Affirmative Action              | Reserve                           |
-| Age Strong Administration       | Reserve for Collective Bargaining City |
-| Age Strong Operations           | Revenue Monitoring                |
-| Age Strong Transportation       | Risk Management                   |
-| Alterations & Repair            | Risk Retention Reserve            |
-| Alternative                     | School Committee                  |
-| Animal Care & Control           | Security Systems                  |
-| Annual Audit Costs              | Small & Local Business            |
-| Archives                        | Snow & Winter Management          |
-| Arts and Culture                | Special Collections               |
-| Assessing Operations            | Special Ed, K-12                  |
-| Auditing Administration         | Sports & Fitness                  |
-| BAT-Admin & Technology          | Strategy                          |
-| BAT-Operations                  | Street Lights                     |
-| BFD Administration              | Student Support Services (C)      |
-| BFD Fire Prevention             | Suffolk County Sheriff Dept       |
-| BFD Maintenance                 | Superintendent                    |
-| BFD Training                    | Tourism                           |
-| BPS Finance                     | Tourism Administration            |
-| BPS Operations                  | Traffic Commissioner's Office     |
-| Boston 311                      | Traffic Enforcement               |
-| Boston Fire Suppression         | Traffic Management & Engineering  |
-| Bridge Operations/Maintenance   | Traffic Operations                |
-| Broadband & Digital Equity      | Treasury Accounting               |
-| Budget & Management             | Treasury Administration           |
-| Budget Administration           | Trust                             |
-| Building Operations             | Turnaround and Transformation     |
-| Building Systems                | Unemployment Comp                 |
-| Building/Facility Maintenance   | Valuation                         |
-| Buildings & Structures          | Veterans' Services                |
-| Bureau of Community Engagement  | Vital Statistics                  |
-| Bureau of Field Services        | Waste Reduction                   |
-| Bureau of Intelligence & Analysis| Women's Commission Program       |
-| Bureau of Investigative Services| Workers' Comp                     |
-| Bureau of Professional Development | Workers' Compensation Fund    |
-| Bureau of Professional Standards | Youth & Family Services          |
-| Capital Budgeting               | Youth Employment and Opportunity Admin |
+1. Navigate to the root directory of your project using the terminal or command prompt.
+    ```bash
+    cd path/to/your/project
+    ```
+2. Create a virtual environment by running the following command:
+    ```bash
+    python -m venv venv
+    ```
+3. Activate the virtual environment:
+    - On Windows:
+      ```bash
+      .\venv\Scripts\activate
+      ```
+    - On macOS and Linux:
+      ```bash
+      source venv/bin/activate
+      ```
+
+#### Step 2: Install Required Packages
+
+1. With the virtual environment activated, install the necessary packages specified in your `requirements.txt` file:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+#### Step 3: Run Python Scripts
+
+1. Execute all Python scripts in the project’s root directory using:
+    ```bash
+    for file in *.py; do python "$file"; done
+    ```
+    (For Windows, execute each file individually or use an equivalent batch command.)
+
+#### Step 4: Run Jupyter Notebooks
+
+1. Ensure Jupyter Notebook is installed. If not, install it:
+    ```bash
+    pip install jupyter
+    ```
+2. Launch Jupyter Notebook:
+    ```bash
+    jupyter notebook
+    ```
+3. Navigate to each `.ipynb` file and execute all cells sequentially to reproduce the analysis.
+
+### For the Modeling Process
+
+TODO
+
+
+### Github Workflow and Test Code
+
+We followed an automated GitHub workflow to ensure code quality and reproducibility. Below is the configuration of our workflow (`python-app.yml`):
+
+```yaml
+name: Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        pytest
+```
 
 ---
+
+## The Model
+
+The primary model implemented in `budget_modeling.py` is a Gradient Boosting Regressor, designed to identify macro-level trends in Boston's budget data. The modeling strategy focuses on long-term insights rather than precision for individual data points. Key aspects include:
+
+1. **Performance Characteristics:**
+   - The model performs well in identifying broader budgetary trends. For instance, it successfully captures the peak in 2008 followed by a decrease due to the financial crisis, then tracks the subsequent recovery.
+   - It is less effective in scenarios with limited forewarning, such as sudden increases in healthcare spending due to the COVID-19 pandemic.
+
+2. **Trade-offs and Justifications:**
+   - While the model does not excel in predicting exact annual budgets, it is highly effective for policy-level decisions. This aligns with the project goals, emphasizing trend analysis over precise predictions.
+   - Examples of the model's trend-tracking ability are visualized in `/model_examples/Example1.png` (Boston-specific) and `/model_examples/Example2.png` (multi-city).
+
+3. **Improvements and Enhancements:**
+   - Recent iterations of the model incorporate year and one-hot encoding of budget types, improving accuracy.
+   - A singular model for Boston has been developed, featuring iterative predictions and interactive graph generation. This model demonstrates a Mean Squared Error (MSE) of approximately 30,000, significantly outperforming the overall model.
+
+4. **Limitations:**
+   - The model struggles with datasets where trends are unclear or metrics are undefined. For example, it fails to predict New York's total budget accurately.
+   - Certain edge cases reveal bugs, such as predicting all zeros for New York in 2003.
+
+5. **Visualization and Interpretability:**
+   - Most effort was dedicated to creating effective visualizations to support policy discussions. The model's outputs, while not flawless, are highly interpretable and align with the project's goals.
+
+
+## Geographical Analysis 
+
+## Results 
+### Key Findings 
+**Model Performance**
+
+- Mean Squared Error (MSE) on Test Set: **30,000 for Boston-specific model**
+
+### Key Visualizations 
+
+
+### Conclusions
+The project successfully identified patterns in Boston's budgeting trends and produced a predictive model for future budgets. While some limitations exist, such as short timeframes for data, the overall approach provides a framework for similar analyses in other cities.
