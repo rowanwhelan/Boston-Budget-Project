@@ -3,10 +3,12 @@
 https://youtu.be/_ajM9b9Qr54
 For our CS 506: Data Science Tools and Applications, our group analyzed budget data for the US city of Boston. We observed historical trends and created expectations for the upcoming fiscal year 2025. Our analysis focused largely on contextualizing the budget through polished visualization techniques. Additionally, we built a model capable of predicting annual budgetary allotments. Depending on the depth of our data, this was more feasible for certain datasets than others. For instance, one dataset only provided four years' worth of data, which limited accurate modeling. Nonetheless, we successfully uncovered patterns in Boston's budget allocation and spending strategies.
 
+---
+
 ## Data
 The data that needs to be collected and visualized is a mix of two pre-provided datasets [detailing the operating](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba) and [capital budget of the city](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641), as well as various other datasets that may include information on domestic 
 
-## Data Processing 
+### Data Processing 
 Our data cleaning process included:
 1. **Converting Budget Values**: Removing commas and converting budget columns to numerical format.
 2. **Handling Missing Values**: Using forward and backward filling methods to address gaps.
@@ -28,7 +30,7 @@ Our data cleaning process included:
 
 ---
 
-##### Highest and Lowest Spending Categories
+##### Highest and Lowest Spending Categories (by expense category)
 
 | Category               | Spending                 |
 |------------------------|--------------------------|
@@ -37,7 +39,7 @@ Our data cleaning process included:
 
 ---
 
-##### Year-Wise Spending Statistics
+##### Year-Wise Spending Statistics (by expense category)
 
 | Year             | Total             | Mean            | Std Dev         | Min            | Max             |
 |------------------|-------------------|-----------------|-----------------|----------------|-----------------|
@@ -58,7 +60,7 @@ Our data cleaning process included:
 
 ---
 
-##### Highest and Lowest Spending Programs
+##### Highest and Lowest Spending Programs (by program)
 
 | Program                        | Spending                  |
 |--------------------------------|---------------------------|
@@ -67,7 +69,7 @@ Our data cleaning process included:
 
 ---
 
-##### Year-Wise Spending Statistics
+##### Year-Wise Spending Statistics (by program)
 
 | Fiscal Year | Total Spending         | Mean              | Standard Deviation | Min      | Max               |
 |-------------|------------------------|-------------------|---------------------|----------|-------------------|
@@ -80,6 +82,8 @@ Our data cleaning process included:
 ### Initial Visualizations 
 TODO
 
+
+---
 ## Reproducing Our Results
 ### For Initial Visualizations and Statistics 
 #### Step 1: Set Up a Python Virtual Environment
@@ -133,7 +137,7 @@ TODO
 
 TODO
 
-
+---
 ### Github Workflow and Test Code
 
 We followed an automated GitHub workflow to ensure code quality and reproducibility. Below is the configuration of our workflow (`python-app.yml`):
@@ -212,5 +216,5 @@ The primary model implemented in `budget_modeling.py` is a Gradient Boosting Reg
 ### Key Visualizations 
 
 
-### Conclusions
+## Conclusions
 The project successfully identified patterns in Boston's budgeting trends and produced a predictive model for future budgets. While some limitations exist, such as short timeframes for data, the overall approach provides a framework for similar analyses in other cities.
