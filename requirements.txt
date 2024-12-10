@@ -2,3 +2,4 @@ pandas>=1.0
 matplotlib>=3.0
 seaborn>=0.10
 plotly==5.15.0
+scikit-learn>=1.0
