@@ -35,4 +35,5 @@ jobs:
       run: |
         pytest ./cabinet/cabinet_breakdown.py \
                ./expenseCategory/expenseCategory_breakdown.py \
-               ./program/program_breakdown.py
+               ./program/program_breakdown.py \ 
+               ./model/budget_modelling.py
