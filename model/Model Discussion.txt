@@ -10,8 +10,8 @@ BUT it does a really great job of tracking the trend. Near 2008 the data peaks b
 Then as the value starts to increase again the model tracks this as well.
 ** this is pictured individually in /model_examples/Example1.png and for every city in /model_examples/Example2.png so you can add it to the final presentation **
 One tradeoff of this design decision is that the model isn't super great at catching onto changes with little forewarning (one good example one be things like an increase in healthcare spending as a result of the pandemic)
-Further the model performs very poorly on data where the trend is unclear (for example in on case it completely fails to predict New York's total budget )
-Finally some of the cities don't use certain metrics to measure their data. IN THAT CASE THE MODEL WILL BEHAVE STRANGELY, IT SHOULD NOT BE USED ON UNDEFINED DATA THAT HAS BEEN CLEANED SO IT IS USABLE 
+Further the model performs very poorly on data where the trend is unclear (for example in on case it completely fails to predict New York's total budget) and the overall MSE is relatively high (46,000) and or it has to cheat on some predictions (guessing all zero for New York in 2003 (this is a bug that I don't know how to fix))
+Finally some of the cities don't use certain metrics to measure their data. IN THAT CASE THE MODEL WILL BEHAVE STRANGELY, IT SHOULD NOT BE USED ON UNDEFINED DATA THAT HAS BEEN CLEANED SO IT IS USABLE (fixed)
 
 One concern some less in the know might raise is that the model is being used to produce values on things that were within its training set.
 But it is important to say that the model only predicts based on previous values (therefore it never had access to the correct answers during its training)
@@ -20,3 +20,5 @@ It will also probabily be good to mention the fact that most of effort was put i
 Improvements:
     Changed the model to take year and one-hot encoding of the budget type into account 
 
+I just finished implementing a singular model for Boston which has the capacity to iteratively build on its predictions I have also set this model up to 
+create an interactive graph as part of the primary workflow for the model. This model is much much more accurate than the overall model (it has a MSE of 30,000) which is split of 14 budget so ~2,000 error on each budget type, but this error is spread over 20 years so the model is approx <100 off the correct answer in the average case time (this math is very handwavy but it's interesting if I'm not missunderstanding something)

@@ -189,7 +189,6 @@ def visualize_predictions_interactive(data, model):
     
     encoded_df = pd.DataFrame(categorical_encoded, columns=encoder.get_feature_names_out(['Variable']))
     data = pd.concat([data.reset_index(drop=True), encoded_df.reset_index(drop=True)], axis=1)
-    print(data)
     data["Predicted"] = model.predict(data.drop(columns=["Budget", "City", "Variable"]))
     data.loc[(data["Lag1"] == 0) & (data["Lag2"] == 0), "Predicted"] = 0
 
@@ -360,7 +359,6 @@ def generate_future_predictions(data, model, category, start_year=2022, end_year
     # Concatenate the historical data with the predicted future data
     complete_data = pd.concat([city_data, future_data], ignore_index=True)
     complete_data = complete_data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
-    complete_data.to_csv("output_csv", index=False)
     return complete_data
 
 # Step 9: Graph the future predictions
@@ -375,15 +373,7 @@ def visualize_boston_predictions(complete_data):
     
     for variable in unique_variables:
         if variable == "All Variables":
-            # Create a trace for all variables combined
-            traces.append(
-                go.Scatter(
-                    x=complete_data["Year"],
-                    y=complete_data[f"Predicted"],
-                    mode="lines",
-                    name="Predicted - All Variables",
-                )
-            )
+            pass
         else:
             # Filter data by the selected variable
             filtered_data = complete_data[complete_data["Variable"] == variable]
@@ -402,7 +392,7 @@ def visualize_boston_predictions(complete_data):
             traces.append(
                 go.Scatter(
                     x=filtered_data["Year"],
-                    y=filtered_data[f"Predicted"],
+                    y=filtered_data["Predicted"],
                     mode="lines",
                     name=f"Predicted - {variable}",
                 )
@@ -453,16 +443,16 @@ def main_workflow():
     data = preprocess_data(data)
 
     # Step 2: Interactive graph for city trends
-    #interactive_city_trends(data)
+    interactive_city_trends(data)
     
     # Step 3: Prepare data for gradient boosting model (Train on all cities)
-    #X_train, X_test, y_train, y_test = prepare_data_for_gbm_all(data)
+    X_train, X_test, y_train, y_test = prepare_data_for_gbm_all(data)
     
     # Step 4: Train the gradient boosting model
-    #gbm_model_all = train_gbm(X_train, X_test, y_train, y_test)
+    gbm_model_all = train_gbm(X_train, X_test, y_train, y_test)
     
     # Step 5: Visualize predictions interactively for all cities
-    #visualize_predictions_interactive(data, gbm_model_all)
+    visualize_predictions_interactive(data, gbm_model_all)
 
     # Select a city (e.g., Boston MA) for analysis and prediction
     category = "MA: Boston"
