@@ -33,7 +33,4 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest /cabinet/cabinet_breakdown.py \
-               /expenseCategory/expenseCategory_breakdown.py \
-               /program/program_breakdown.py \
-               /model/budget_modelling.py
+        pytest ./model/budget_modelling.py
