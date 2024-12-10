@@ -84,7 +84,19 @@ Our general data cleaning process included:
 
 ---
 ### Initial Visualizations 
-TODO
+#### Budget by Major Class
+- **[Proposed vs Revised Budgets by Major Class](./budget/Images/combined_proposed_revised_budgets.png)**
+#### Budget by Cabinet 
+- **[Spending Over Time by Cabinet](./cabinet/visualizations/spending_over_time_by_cabinet_interactive.png)**
+#### Budget by Program
+- **[FY25 Budget Projections by Program](./program/visualizations/interactive/budget_by_program_interactive_pie.png)**
+- **[Least Volatile Changes by Program](./program/visualizations/interactive/least_volatile_changes_program_interactive.png)**
+[Most Volatile Changes by Program](./program/visualizations/interactive/most_volatile_changes_program_interactive.png)
+[Volatility Comparison by Program](./program/visualizations/interactive/volatility_comparison_by_program_interactive.png)
+#### Budget by Expense Category 
+- **[FY25 Budget Projections by Expense Category](./expenseCategory/visualizations/fy25_budget_by_expenseCategory_PieChart_interactive.png)**
+- **[Spending Over Time by Expense Category](./expenseCategory/visualizations/expenseCategory_spending_over_time_interactive.png)**
+
 
 
 ---
@@ -284,8 +296,12 @@ TODO
 
 ### Key Visualizations 
 Actual Versus Predicted Budgets for General Expenditures 
-[For Boston](./models/model_examples/Example1.png)
-[For Other Major Cities](./models/model_examples/Example2.png)
+- **[For Boston](./models/model_examples/Example1.png)**
+![For Boston](./models/model_examples/Example1.png)
+- **[For Other Major Cities](./models/model_examples/Example2.png)**
+![For Other Major Cities](./models/model_examples/Example2.png)
+
+
 
 ## Conclusions
 The Boston Budgetary Analysis Project offers critical insights into the city’s financial patterns. By leveraging machine learning and visualization, the analysis highlights key trends, including resilience to economic challenges and consistent growth in personnel expenses. While limitations exist, such as the model's inability to handle unforeseen spending spikes, the findings provide actionable intelligence for policymakers. Future efforts could focus on enhancing predictive accuracy and addressing data sparsity issues to refine the model’s utility across diverse scenarios. Overall, this project lays the groundwork for informed fiscal decision-making and sets a precedent for similar studies in other urban contexts.
