@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from prophet import Prophet
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
@@ -54,30 +53,6 @@ def interactive_city_trends(data):
     )
     
     fig.show()
-
-"""# Step 3: Analyze Trends with Prophet and Add Context
-def analyze_trends(data, category):
-    # Filter data for the selected category (City)
-    city_data = data[data["City"] == category]
-    
-    # Prepare the data for Prophet
-    prophet_data = city_data[["Year", "Budget"]].rename(columns={"Year": "ds", "Budget": "y"})
-    
-    # Fit the Prophet model
-    model = Prophet()
-    model.fit(prophet_data)
-    
-    # Create future DataFrame and forecast
-    future = model.make_future_dataframe(periods=5, freq='Y')
-    forecast = model.predict(future)
-    
-    # Plot forecast
-    fig = model.plot(forecast)
-    plt.title(f"Trend Analysis for {category}")
-    plt.show()
-    
-    return forecast
-"""
 
 # Step 3 and 7: Prepare Data for Gradient Boosting Model
 def prepare_data_for_gbm_all(data):
