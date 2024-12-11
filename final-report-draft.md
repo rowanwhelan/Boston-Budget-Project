@@ -162,6 +162,15 @@ Our general data cleaning process included:
 
 #### Option 2: Makefile
 
+1. Navigate to the root directory of your project using the terminal or command prompt.
+    ```bash
+    cd path/to/your/project
+    ```
+2. Execute the following command:
+   ```bash
+   make
+   ```
+
 ---
 ### Github Workflow and Test Code
 
