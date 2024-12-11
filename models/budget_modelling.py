@@ -336,6 +336,54 @@ def generate_future_predictions(data, model, category, start_year=2022, end_year
     complete_data = complete_data.sort_values(by=["Variable", "Year"]).reset_index(drop=True)
     return complete_data
 
+"""def merge_outside_data(data):
+    outside_source = pd.read_csv("data/fy25-adopted-operating-budget.csv")
+    
+    # Calculate mean and standard deviation of the Budget column (ignoring NaN)
+    budget_mean = data['Budget'].mean(skipna=True)
+    budget_std = data['Budget'].std(skipna=True)
+    
+ # Define the categories to match and normalize
+    categories = {
+        "Education Spending": "Education", 
+        "Envir. & Housing Spending": "Environment and Housing",
+        "General Expenditures": "General Expenditures",
+        "Govt. Admin. Spending": "Government Administration",
+        "Health & Welfare Spending": "Health and Welfare",
+        "Interest on General Debt": "Interest on Debt",
+        "Miscellaneous Spending": "Miscellaneous",
+        "Public Safety Spending": "Public Safety",
+        "Total Expenditures": "Total Expenditures",
+        "Transit Utility Spending": "Transit Utility",
+        "Transportation Spending": "Transportation",
+        "Water Utility Spending": "Water Utility"
+    }
+    
+    # Extract relevant budgets from the outside source by matching categories
+    extracted_budgets = []
+    for category, pattern in categories.items():
+        # Search for rows in the outside source containing the category pattern
+        matched_rows = outside_source[outside_source['Cabinet'].str.contains(pattern, case=False, na=False)]
+        # Append relevant data (Category, Year, and Budget) to extracted_budgets
+        extracted_budgets.append(matched_rows[['Cabinet', 'Year', 'Budget']])
+    
+    # Concatenate all matched rows into a single DataFrame
+    extracted_df = pd.concat(extracted_budgets)
+    
+    # Standardize the budgets from the outside source
+    extracted_df['StandardizedBudget'] = (extracted_df['Budget'] - budget_mean) / budget_std
+    
+    # Merge the standardized budgets into the primary dataset
+    for _, row in extracted_df.iterrows():
+        category = row['Category']
+        year = row['Year']
+        standardized_budget = row['StandardizedBudget']
+        
+        # Locate the corresponding slot in the primary data and update the budget
+        data.loc[(data['Variable'] == category) & (data['Year'] == year), 'Budget'] = standardized_budget
+    
+    return data"""
+
 # Step 9: Graph the future predictions
 def visualize_boston_predictions(complete_data):
     
@@ -441,7 +489,11 @@ def main_workflow():
     # Step 8: Generate future predictions for Boston (2021-2030)
     complete_data = generate_future_predictions(data, gbm_model_boston, category, start_year=2022, end_year=2025)
     
-    # Step 9: Visualize the actual and predicted budgets for Boston (including future predictions)
+    # Step 9: Add an outside source to extend the data
+    #complete_data = merge_outside_data(complete_data)
+
+    
+    # Step 10: Visualize the actual and predicted budgets for Boston (including future predictions)
     visualize_boston_predictions(complete_data)
     return True
 
@@ -449,5 +501,4 @@ if __name__ == "__main__":
     assert main_workflow()
     
 def test():
-    #To be Implemented
-    assert True
+    assert main_workflow()
