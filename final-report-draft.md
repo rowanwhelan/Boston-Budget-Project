@@ -317,7 +317,8 @@ The geographic analysis component of this project examines spatial and demograph
 ### Key Findings 
 - **Resilience in Economic Trends**: The budget shows a strong ability to adapt to economic cycles, evident in its post-2008 recovery and growth after initial pandemic disruptions.
 **Model Performance and Next Steps**
-- **Mean Squared Error (MSE) on Test Set**: 30,000 for Boston-specific model
+- **Mean Squared Error (MSE) on Test Set**: 30,000 for Boston-specific model, showcasing a balance between simplicity and capturing macro-level trends effectively.
+
 - **Extend the Timeframe**: Incorporate budget data from years beyond the 2000–2021 metro dataset. This expanded timeframe would enable better trend identification and reduce overfitting to the current dataset.
 - **Model Validation on New Data**: Apply the model to these newly added years to test its robustness in predicting unseen data and refine any parameters based on performance metrics.
 
