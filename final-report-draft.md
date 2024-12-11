@@ -14,6 +14,10 @@ We utilized a mix of two primary datasets which detail the operating and capital
 
 These were supplemented with other datasets containing additional context about spending patterns and funding priorities. In addition, we looked at budgets and expense of other major metropoliton cities and datasets containing information on Boston's geographic data. 
 
+Major datasets used largely for geographical plotting included:
+1. [Boston Neighborhood Data](https://data.boston.gov/dataset/2020-census-for-boston/resource/5800a0a2-6acd-41a3-9fe0-1bf7b038750d)
+2. [Neighborhood Childcare Affordability Analysis](https://data.boston.gov/dataset/boston-opportunity-agenda-state-of-early-early-education-and-care/resource/ea0f2711-96fc-4ec4-a0a2-3f979e8be900)
+
 ### Data Processing 
 Our general data cleaning process included:
 1. **Converting Budget Values**: Removing commas and converting budget columns to numerical format.
@@ -91,8 +95,8 @@ Our general data cleaning process included:
 #### Budget by Program
 - **[FY25 Budget Projections by Program](./program/visualizations/interactive/budget_by_program_interactive_pie.png)**
 - **[Least Volatile Changes by Program](./program/visualizations/interactive/least_volatile_changes_program_interactive.png)**
-[Most Volatile Changes by Program](./program/visualizations/interactive/most_volatile_changes_program_interactive.png)
-[Volatility Comparison by Program](./program/visualizations/interactive/volatility_comparison_by_program_interactive.png)
+![Most Volatile Changes by Program](./program/visualizations/interactive/most_volatile_changes_program_interactive.png)
+![Volatility Comparison by Program](./program/visualizations/interactive/volatility_comparison_by_program_interactive.png)
 #### Budget by Expense Category 
 - **[FY25 Budget Projections by Expense Category](./expenseCategory/visualizations/fy25_budget_by_expenseCategory_PieChart_interactive.png)**
 - **[Spending Over Time by Expense Category](./expenseCategory/visualizations/expenseCategory_spending_over_time_interactive.png)**
@@ -315,7 +319,27 @@ The geographic analysis component of this project examines spatial and demograph
 4. **Feature Graphing**:
    - Automated the generation of feature-specific maps for all attributes, enabling comprehensive spatial analysis.
 
+### Graphics
 
+#### Figure 1: Percentage of Disabled Individuals by Neighborhood
+
+![Vacant Ratio](./geographical-plots/DisabledRate.png)
+
+#### Figure 2: Rate of Medical Illness Per Capita
+
+![Medical Illness](./geographical-plots/IllnessPerCapita.png)
+
+#### Figure 3: Percentage of Older Adults by Neighborhood
+
+![Disabled Rate](./geographical-plots/OlderAdultPct.png)
+
+#### Figure 4: Low Income Households (Absolute Numbers)
+
+![Low Income Households](./geographical-plots/LowIncomeHouseholds.png)
+
+#### Figure 5: Median Income
+
+![Median Income](./geographical-plots/MedianIncome.png)
 
 ---
 ## Results 
