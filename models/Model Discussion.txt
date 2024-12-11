@@ -24,3 +24,8 @@ I just finished implementing a singular model for Boston which has the capacity 
 create an interactive graph as part of the primary workflow for the model. This model is much much more accurate than the overall model (it has a MSE of 30,000) which is split of 14 budget so ~2,000 error on each budget type, but this error is spread over 20 years so the model is approx <100 off the correct answer in the average case time (this math is very handwavy but it's interesting if I'm not missunderstanding something)
 based on just MSE (a flawed metric but good enough for now) individually training the model on Boston is 40,0000/30,000 percent more effective 
 This could be improved by One hot encoding the Cities but this seemed excessive given the scope and goals of the project.
+
+RE: Andrew
+"Suggested citation:"
+"Lincoln Institute of Land Policy. Fiscally Standardized Cities database. https://www.lincolninst.edu/data/fiscally-standardized-cities/access-fisc-database/"
+"Accessed on: December 9, 2024"
