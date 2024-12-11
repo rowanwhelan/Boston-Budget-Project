@@ -150,8 +150,16 @@ Our general data cleaning process included:
 3. Navigate to each `.ipynb` file and execute all cells sequentially to reproduce the analysis.
 
 ### For the Modeling Process
-
-TODO
+Either: 
+Run the file manually
+1. run 
+```bash
+python "PATH TO /models" /models/budget_modelling.py
+```
+2. This will open 3 interactive tabs that contain graphs of the entire data set and the models predictions.
+3. The graphs default to having every option visible, to experiment with visibility you need to select an option
+Use the make file
+  TODO
 
 ---
 ### Github Workflow and Test Code
@@ -315,13 +323,9 @@ The geographic analysis component of this project examines spatial and demograph
 ---
 ## Results 
 ### Key Findings 
+**Model Performance**
 - **Resilience in Economic Trends**: The budget shows a strong ability to adapt to economic cycles, evident in its post-2008 recovery and growth after initial pandemic disruptions.
-**Model Performance and Next Steps**
-- **Mean Squared Error (MSE) on Test Set**: 30,000 for Boston-specific model, showcasing a balance between simplicity and capturing macro-level trends effectively.
-
-- **Extend the Timeframe**: Incorporate budget data from years beyond the 2000–2021 metro dataset. This expanded timeframe would enable better trend identification and reduce overfitting to the current dataset.
-- **Model Validation on New Data**: Apply the model to these newly added years to test its robustness in predicting unseen data and refine any parameters based on performance metrics.
-
+- **Mean Squared Error (MSE) on Test Set**: 30,000 for Boston-specific model
 
 ### Key Visualizations 
 Actual Versus Predicted Budgets for General Expenditures 
