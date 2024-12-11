@@ -150,16 +150,13 @@ Our general data cleaning process included:
 3. Navigate to each `.ipynb` file and execute all cells sequentially to reproduce the analysis.
 
 ### For the Modeling Process
-Either: 
-Run the file manually
-1. run 
-```bash
-python "PATH TO /models" /models/budget_modelling.py
-```
-2. This will open 3 interactive tabs that contain graphs of the entire data set and the models predictions.
-3. The graphs default to having every option visible, to experiment with visibility you need to select an option
-Use the make file
-  TODO
+#### Option 1: Run the file manually
+
+1. Execute the following command:
+   ```bash
+   python "PATH TO /models" /models/budget_modelling.py
+
+#### Option 2: Makefile
 
 ---
 ### Github Workflow and Test Code
