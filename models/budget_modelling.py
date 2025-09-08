@@ -84,7 +84,7 @@ def prepare_data_for_gbm_all(data):
     X = data.drop(columns=["Budget", "Variable", "City"])
     y = data["Budget"]
     
-    # Train-test split (we will train on the entire dataset and predict on the same)
+    # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
     return X_train, X_test, y_train, y_test
@@ -501,4 +501,5 @@ if __name__ == "__main__":
     assert main_workflow()
     
 def test():
+
     assert main_workflow()
